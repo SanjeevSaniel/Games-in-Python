@@ -1,9 +1,6 @@
 # Simple Elevator game
 import time
 
-# New empty list to store items that is required
-items = []
-
 
 # Function to print the required messages wherever required
 # and pause after printing every message
@@ -12,8 +9,14 @@ def print_pause(message_to_print):
     time.sleep(1)
 
 
+#  Introduction message
+def intro():
+    print_pause("You have just arrived at your new job!")
+    print_pause("You are in the elevator.")
+
+
 # First Floor
-def first_floor():
+def first_floor(items):
     print_pause("You push the button for the first floor.")
     print_pause("After a few moments, you find "
                 "yourself in the lobby.")
@@ -25,11 +28,11 @@ def first_floor():
         print_pause("The clerk greets you and gives you your ID card")
         items.append("ID card")
     print_pause("You head back to the elevator.")
-    ride_elevator()
+    ride_elevator(items)
 
 
 # Seccond Floor
-def second_floor():
+def second_floor(items):
     print_pause("You push the button for the second floor.")
     print_pause("After a few moments, you find yourself "
                 "in the human resources department.")
@@ -47,11 +50,11 @@ def second_floor():
             print_pause("He has something for you, but says he can't "
                         "give it to you until you go get your ID card.")
         print_pause("You head back to the elevator.")
-        ride_elevator()
+        ride_elevator(items)
 
 
 # Third Floor
-def third_floor():
+def third_floor(items):
     print_pause("You push the button for the third floor.")
     print_pause("After a few moments, you find yourself "
                 "in the engineering department.")
@@ -68,20 +71,17 @@ def third_floor():
         else:
             print_pause("They scowl when they see that you don't have it, "
                         "and send you back to the elevator.")
+            ride_elevator(items)
 
     else:
         print_pause("Unfortunately, the door is locked and you can't get in.")
         print_pause(
             "It looks like you need some kind of key card to open the door.")
         print_pause("You head back to the elevator.")
-        ride_elevator()
+        ride_elevator(items)
 
 
-print_pause("You have just arrived at your new job!")
-print_pause("You are in the elevator.")
-
-
-def ride_elevator():
+def ride_elevator(items):
     print_pause("Please enter the number for the "
                 "floor you would like to visit:")
     floor = input("1. Lobby\n"
@@ -90,17 +90,24 @@ def ride_elevator():
 
     # First Floor
     if floor == '1':
-        first_floor()
+        first_floor(items)
 
     # Second Floor
     elif floor == '2':
-        second_floor()
+        second_floor(items)
 
     # Third Floor
     elif floor == '3':
-        third_floor()
+        third_floor(items)
 
     print_pause("Where would you like to go next?")
 
 
-ride_elevator()
+def play_game():
+    # New empty list to store items that is required
+    items = []
+    intro()
+    ride_elevator(items)
+
+
+play_game()
