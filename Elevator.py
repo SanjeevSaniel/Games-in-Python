@@ -1,7 +1,10 @@
+# Simple Elevator game
 import time
+
+# New empty list to store items that is required
 items = []
 
-
+# Function to print the required messages wherever required
 def print_pause(message_to_print):
     print(message_to_print)
     time.sleep(1)
