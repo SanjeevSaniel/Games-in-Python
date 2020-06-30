@@ -1,2 +1,2 @@
 # Games-in-Python
-Text based games using Python.
+Simple Text based games using Python.
